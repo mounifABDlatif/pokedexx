@@ -1,0 +1,36 @@
+<body>
+
+
+    <main class="container">
+
+
+        <section class="col-md-12">
+            <h1 class="text-center"><img style="width:250px;" src="assets/logo.png" alt=""></h1>
+            <h1 class="text-center">Bienvenue sur votre pokedex</h1>
+            <p class="text-center">Vous disposez de {{pokemons.length}} pokemon !<br>
+                <img *ngFor="let pokemon of pokemons" style="width:20px;" src="assets/pok.png" alt="">
+            </p>
+            <div class="row mt-3">
+
+                <div>
+                    <button class="btn btn-info" [routerLink]="['ajouter']">Ajouter un pokemon</button>
+                </div>
+                <div class="card col-md-2 mt-2" [ngClass]="colorchange(pokemon.types)" *ngFor="let pokemon of pokemons">
+                    <a [routerLink]="['detail',pokemon.id]">
+                        <img class="header-img" style="width:200px;" [src]="pokemon.picture" alt="">
+                        <div class="card-body">
+                            <h6 class="text-center">{{pokemon.fullname}}</h6>
+                            <p class="text-center">cp:{{pokemon.cp}}</p>
+                            <p class="text-center">hp:{{pokemon.hp}}</p>
+                            <p class="text-center">type:{{pokemon.types}}</p>
+                            <p class="text-center">date:{{pokemon.created | date: "dd/mm/yyyy"}}</p>
+                            <!-- le | appelé 'pipe' est un filtre qui permet de cibler les données qu'on voudra récupérer qui se trouve dans la proprité-->
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+</body>

@@ -1,0 +1,28 @@
+<section class="col-md-12">
+    <h3 class="text-center">Détail du pokemon</h3>
+    
+    <div class="text-center">
+
+        <div class="text-center">
+            
+                <img class="text-center" style=" display:block; width:200px;" [src]="pokemon.picture" alt="">
+                <div class="card-body">
+                    <h6 class="text-center">{{pokemon.fullname}}</h6>
+                    <p class="text-center">cp: {{pokemon.cp}}</p>
+                    <p class="text-center">hp: {{pokemon.hp}}</p>
+                    <p class="text-center">type: {{pokemon.types}}</p>
+                    <p class="text-center">date: {{pokemon.created | date: "dd/mm/yyyy"}}</p>
+                    <!-- le | appelé 'pipe' est un filtre qui permet de cibler les données qu'on voudra récupérer qui se trouve dans la proprité-->
+
+                    <div>
+                        <button [routerLink]="['']" class="btn btn-light">Retouner</button>
+                        <button  [routerLink]="['/edit',pokemon.id]" class="btn btn-light">Editer</button>
+                        <button class="btn btn-danger" [routerLink]="['']" (click)="supprimer()">Supprimer</button>
+                    </div>
+                </div>
+            
+        </div>
+
+    </div>
+
+</section>

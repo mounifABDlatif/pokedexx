@@ -1,0 +1,66 @@
+<div class="container">
+
+    <div class="d-flex">
+        <img [src]="pokemon.picture" class="card-img-top" style="width: 400px;" alt="...">
+        <h1>Edité ce pokemon ?</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form *ngIf="pokemon" (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+                <!-- Pokemon picture -->
+                <div class="form-group">
+                    <label for="picture">Photo</label>
+                    <input type="text" class="form-control" id="picture" [(ngModel)]="pokemon.picture" name="picture"
+                        #name="ngModel">
+                </div>
+
+                <!-- Pokemon fullname -->
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" id="name" required pattern="^[a-zA-Z0-9àéè]{1,25}$"
+                        [(ngModel)]="pokemon.fullname" name="fullname" #fullname="ngModel">
+
+                    <div [hidden]="fullname.valid">
+                        le nom du pokemon est requis (1-25).
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!--modif cp-->
+                    <label for="name">cp</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="pokemon.cp" name="cp"
+                        #fullname="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <!--modif hp-->
+                    <label for="name">hp</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="pokemon.hp" name="hp"
+                        #fullname="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <!--modif Type-->
+                    <label for="name">Type</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="pokemon.types" name="types"
+                        #fullname="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <!--modif date-->
+                    <label for="name">Date</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="pokemon.created"
+                        name="created" #fullname="ngModel">
+                </div>
+
+                <!-- Submit button -->
+                <div class="section center">
+                    <button type="submit" class="btn btn-dark" [disabled]="!f.form.valid">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
